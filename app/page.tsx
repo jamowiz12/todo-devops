@@ -38,6 +38,9 @@ export default function Home() {
       )
     );
   };
+  const deleteTask = (id: number) => {
+  setTasks(tasks.filter((task) => task.id !== id));
+};
 
   return (
     <main className="min-h-screen bg-gray-100 flex items-center justify-center p-6">
@@ -98,7 +101,10 @@ export default function Home() {
                   </span>
                 </div>
 
-                <button className="text-red-500">
+                <button
+                  onClick={() => deleteTask(task.id)}
+                  className="text-red-500"
+                >
                   Delete
                 </button>
               </div>
