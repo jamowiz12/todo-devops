@@ -45,9 +45,15 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-gray-100 flex items-center justify-center p-6">
       <div className="w-full max-w-lg bg-white rounded-2xl shadow-lg p-8">
-        <h1 className="text-3xl font-bold text-center mb-6">
-          TODO APPLICATION
-        </h1>
+        <div className="text-center mb-6">
+  <div className="bg-yellow-100 text-yellow-800 px-3 py-2 rounded-lg mb-3 text-sm font-semibold">
+    🚧 DEVELOPMENT VERSION
+  </div>
+
+  <h1 className="text-3xl font-bold">
+    TODO APPLICATION
+  </h1>
+</div>
 
         <div className="flex gap-2 mb-6">
           <input
@@ -96,7 +102,7 @@ export default function Home() {
                         ? "line-through text-gray-400"
                         : ""
                     }
-                  >
+                  >git checkout develop
                     {task.text}
                   </span>
                 </div>
