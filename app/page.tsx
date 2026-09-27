@@ -5,6 +5,7 @@ import { useState } from "react";
 type Task = {
   id: number;
   text: string;
+  completed: boolean;
 };
 
 export default function Home() {
@@ -21,10 +22,21 @@ export default function Home() {
     const newTask: Task = {
       id: Date.now(),
       text: trimmedTask,
+      completed: false,
     };
 
     setTasks([...tasks, newTask]);
     setTask("");
+  };
+
+  const toggleTask = (id: number) => {
+    setTasks(
+      tasks.map((task) =>
+        task.id === id
+          ? { ...task, completed: !task.completed }
+          : task
+      )
+    );
   };
 
   return (
@@ -67,9 +79,23 @@ export default function Home() {
                 key={task.id}
                 className="flex items-center justify-between border-b pb-3"
               >
-                <div>
-                  <input type="checkbox" className="mr-3" />
-                  <span>{task.text}</span>
+                <div className="flex items-center">
+                  <input
+                    type="checkbox"
+                    checked={task.completed}
+                    onChange={() => toggleTask(task.id)}
+                    className="mr-3"
+                  />
+
+                  <span
+                    className={
+                      task.completed
+                        ? "line-through text-gray-400"
+                        : ""
+                    }
+                  >
+                    {task.text}
+                  </span>
                 </div>
 
                 <button className="text-red-500">
